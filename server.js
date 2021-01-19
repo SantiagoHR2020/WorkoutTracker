@@ -20,6 +20,7 @@ mongoose.connect("mongodb://localhost/workout", {
 })
 
 app.use(require("./Routes/view"))
+app.use(require("./Routes/api"))
 
 
 
