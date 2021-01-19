@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
-const logger = require("morgan")
+const logger = require("morgan");
+const router = require("./Routes/api");
 
 const PORT = process.env.PORT || 3000;
 
@@ -20,7 +21,7 @@ mongoose.connect("mongodb://localhost/workout", {
 })
 
 app.use(require("./Routes/view"))
-app.use(require("./Routes/api"))
+app.use("/api", router)
 
 
 
