@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Workout = require("../models/workout");
 
-router.get("/api/workouts", (req, res) => {
+router.get("/workouts", (req, res) => {
   Workout.find({})
     .then((workoutData) => {
       res.json(workoutData);
@@ -9,8 +9,8 @@ router.get("/api/workouts", (req, res) => {
     .catch((err) => res.json(err.message));
 });
 
-router.post("/api/workouts", ({ body }, res) => {
-  Workout.create(body)
+router.post("/workouts", (req, res) => {
+  Workout.create({})
     .then((workoutData) => {
       res.json(workoutData);
     })
@@ -21,9 +21,9 @@ router.post("/api/workouts", ({ body }, res) => {
 
 router.put("/workouts/:id", (req, res) => {
   Workout.findByIdAndUpdate(
-    {
-      _id: mongojs.ObjectId(req.params.id),
-    },
+    
+      req.params.id
+    ,
     {
       $push: {
         exercises: req.body,
@@ -38,7 +38,7 @@ router.put("/workouts/:id", (req, res) => {
       res.json(err.message);
     });
 });
-
+// use run validators
 //aggregate
 //addFields
 
