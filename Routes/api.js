@@ -11,8 +11,6 @@ router.get("/workouts", (req, res) => {
       },
     },
   ])
-    .sort({ day: 1 })
-    .limit(10)
     .then((workoutData) => {
       res.json(workoutData);
     })
@@ -30,7 +28,7 @@ router.get("/workouts/range", (req, res) => {
     },
   ])
     .sort({ day: 1 })
-    .limit(10)
+    .limit(7)
     .then((workoutData) => {
       res.json(workoutData);
     })
